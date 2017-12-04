@@ -1,8 +1,11 @@
 # atos_poc
-Couple of scripts used to automate ATOS EVPN/VXLAN DC setup
+Couple of scripts used to automate ATOS EVPN/VXLAN DC setup.
 
 Provision using Python script
+-----------------------------
+
 Type5 EVPN tenant, 2 VNIs starting from 110
+
 ```
 ./add_evpn.py templates/devices evpn -nv 2 -vid 110
 [edit interfaces ae1 unit 0 family ethernet-switching vlan]
@@ -46,6 +49,7 @@ qfx5110-6 - Done
 ```
 
 Provision using Ansible
+-----------------------
 
 ```
 ansible-playbook pb.do_evpn.yml --diff -e "type=Type2"                                                                       
