@@ -1,0 +1,22 @@
+---
+ - name: Rollback configuration on junos devices
+   hosts: 
+     pod2
+   roles:
+    - Juniper.junos
+   connection: local
+   gather_facts: no
+   vars:
+     ansible_python_interpreter: /Users/daleksandrov/Envs/ansible/bin/python
+
+
+   tasks:
+
+   - name: Rollback junos config task
+     junos_rollback:
+      host={{ junos_host }}
+      user=ularc
+      passwd=Poclab123
+      diffs_file={{playbook_dir}}/{{ inventory_hostname }}.diff
+      rollback={{ rb }}
+      comment="configuration rolled back by Ansible"

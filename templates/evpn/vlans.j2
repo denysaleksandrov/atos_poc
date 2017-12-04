@@ -1,0 +1,12 @@
+vlans {
+    {% for vlan in vlans %}
+    v{{vlan}} {
+        vlan-id {{vlan}};
+        l3-interface irb.{{vlan}};
+        vxlan {
+            vni {{vlan}};
+        }
+    }
+    {% endfor %}
+}
+

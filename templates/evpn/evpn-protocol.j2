@@ -1,0 +1,11 @@
+protocols {
+    evpn {
+        {% for vni in vlans %}
+        vni-options {
+            vni {{ vni }} {
+                vrf-target target:1:{{ vni }};
+            }
+        }
+        {% endfor %}
+    }
+}

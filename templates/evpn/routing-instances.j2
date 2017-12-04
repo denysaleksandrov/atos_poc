@@ -1,0 +1,8 @@
+routing-instances {
+    {{type}} {
+        {% for vlan in vlans %}
+        interface irb.{{vlan}};
+        {% endfor %}
+    }
+}
+

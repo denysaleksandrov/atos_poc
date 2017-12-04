@@ -1,0 +1,17 @@
+---
+- name: Create config for leaf
+  hosts: 
+    pod1
+    pod2
+  connection: local
+  gather_facts: no
+  pre_tasks:
+    - include_vars: "{{ playbook_dir }}/vlans.yml"
+
+  roles:
+    - vlans
+    - policy
+    - evpn
+    - interfaces
+    - routing-instances
+    - build-config

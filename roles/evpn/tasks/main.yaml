@@ -1,0 +1,5 @@
+---
+- name: create evpn
+  template: >
+    src={{ playbook_dir }}/templates/evpn/evpn-protocol.j2
+    dest={{ playbook_dir }}/tmp/{{ inventory_hostname }}/evpn-protocol.conf.part

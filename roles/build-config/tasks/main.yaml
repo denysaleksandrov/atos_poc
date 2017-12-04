@@ -1,0 +1,3 @@
+---
+- name: Assembling configurations and copying to conf/
+  assemble: src={{ playbook_dir }}/tmp/{{ inventory_hostname }}/ dest={{ junos_conf }}

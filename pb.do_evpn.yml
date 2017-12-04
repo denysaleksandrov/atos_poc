@@ -1,0 +1,33 @@
+---
+- include: pb.conf.yml
+- name: add vxlan 
+  hosts: 
+    pod1
+    pod2
+  gather_facts: no
+  connection: local
+  vars:
+    ansible_python_interpreter: /Users/daleksandrov/Envs/ansible/bin/python
+  pre_tasks:
+   - include_vars: "{{ config_files }}"
+  
+  tasks:
+  - name: delete default term in EVPN-host-routes policy
+    junos_config:
+      provider: "{{ credentials }}"
+      lines:
+       - delete policy-options policy-statement EVPN-host-routes term default
+      comment: configured by Ansible module junos_config
+
+  - name: add config
+    junos_template:
+     src: "{{ junos_conf }}"
+     comment: "Applied by Ansible"
+     provider: "{{ credentials }}"
+
+  - name: add back default term in EVPN-host-routes policy
+    junos_config:
+      provider: "{{ credentials }}"
+      lines:
+       - set policy-options policy-statement EVPN-host-routes term default then reject
+      comment: configured by Ansible module junos_config

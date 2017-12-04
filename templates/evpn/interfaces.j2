@@ -1,0 +1,38 @@
+interfaces {
+    {{ base_interface }} {
+        unit 0 {
+            family ethernet-switching {
+        		interface-mode trunk;
+        		vlan {
+        			{% for vlan in vlans %}
+            		members {{vlan}};
+        		    {% endfor %}
+        		}
+    		}
+        }
+    }
+    {% if type == 'Type2' %}
+    ae2 {
+        unit 0 {
+            family ethernet-switching {
+        		interface-mode trunk;
+        		vlan {
+        			{% for vlan in vlans %}
+            		members {{vlan}};
+        		    {% endfor %}
+        		}
+    		}
+        }
+    }
+    {% endif %}
+    irb { 
+        {% for mac, vlan, address in zip(macs, vlans, subnets) %}
+        unit {{ vlan }} {
+            family inet {
+                address {{ address }}/24;
+            }
+    		mac {{mac}};
+        }
+        {% endfor %}
+    }
+}

@@ -1,0 +1,6 @@
+---
+- name: create vlans
+  template: >
+    src={{ playbook_dir }}/templates/evpn/routing-instances.j2
+    dest={{ playbook_dir }}/tmp/{{ inventory_hostname }}/routing-instances.conf.part
+  

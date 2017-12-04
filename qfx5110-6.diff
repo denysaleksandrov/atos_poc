@@ -1,0 +1,5 @@
+
+[edit policy-options policy-statement EVPN-host-routes]
+-    term default {
+-        then reject;
+-    }

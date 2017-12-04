@@ -1,0 +1,5 @@
+---
+- name: create policy
+  template: >
+    src={{ playbook_dir }}/templates/evpn/policies.j2
+    dest={{ playbook_dir }}/tmp/{{ inventory_hostname }}/policy.conf.part

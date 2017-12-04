@@ -1,0 +1,27 @@
+policy-options {
+    policy-statement LEAF-IN {
+        {% for vlan in vlans %}
+        term import_vni{{ vlan }} {
+            from community com{{ vlan }};
+            then accept;
+        }
+        {% endfor %}
+    }
+    {% for vlan in vlans %}
+    community com{{ vlan }} members target:1:{{ vlan }};
+    {% endfor %}
+    {% if type == 'VRF_L3' %}
+	policy-statement EVPN-host-routes {
+        {% for vlan, subnet in zip(vlans, subnets) %}
+    	term adv-v{{vlan}} {
+    	    from {
+    	        protocol evpn;
+    	        route-filter {{subnet}} orlonger;
+    	    }
+    	    then accept;
+    	}
+    	{% endfor %}
+    }
+    {% endif %}
+}
+

@@ -1,0 +1,41 @@
+# Ignore compiled python and swap files
+*.pyc
+*.swp
+
+# Ignore development database
+db.sqlite3
+
+# Ignore contents of log diretctory
+log/*
+
+# Ignore coverage files
+.coverage
+htmlcov/
+
+# Ignore reports files
+reports/
+
+# Ignore python cache files
+__pycache__
+
+# Ignore sphinx caches
+docs/_*
+
+# Ignore PhantomJS log file
+ghostdriver.log
+
+# Ignore the celery-beat scheduling database and pidfile
+celerybeat*
+dump.rdb
+
+# Ignore documents (like meeting minutes)
+docs/
+
+# Ignore Mac finder hidden file
+.DS_Store
+
+# Ignore Ansible temp file
+.conf
+.part
+.retry
+.diff

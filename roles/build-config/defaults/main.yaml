@@ -1,0 +1,4 @@
+build_dir: "/tmp/{{ inventory_hostname }}/tmp"
+junos_conf_dir: "{{ playbook_dir }}/config"
+junos_conf_file: "{{ inventory_hostname }}.conf"
+junos_conf: "{{ junos_conf_dir }}/{{ junos_conf_file }}"

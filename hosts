@@ -1,0 +1,35 @@
+[qfx5110-3]
+qfx5110-3   junos_host=172.30.181.22
+[qfx5110-3:vars]
+lo0=192.181.0.22
+
+[qfx5110-4]
+qfx5110-4   junos_host=172.30.181.23
+[qfx5110-4:vars]
+lo0=192.181.0.23
+
+[qfx5110-5]
+qfx5110-5   junos_host=172.30.181.25
+[qfx5110-5:vars]
+lo0=192.181.0.25
+
+[qfx5110-5]
+qfx5110-5   junos_host=172.30.181.25
+[qfx5110-5:vars]
+lo0=192.181.0.25
+
+[qfx5110-6]
+qfx5110-6   junos_host=172.30.181.27
+[qfx5110-6:vars]
+lo0=192.181.0.24
+
+[pod1:children]
+qfx5110-3
+qfx5110-4
+
+[pod2:children]
+qfx5110-5
+qfx5110-6
+
+[all:vars]
+config_files="{{ playbook_dir}}/vars.yaml"
