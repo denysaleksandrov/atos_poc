@@ -35,7 +35,7 @@ docs/
 .DS_Store
 
 # Ignore Ansible temp file
-.conf
-.part
-.retry
-.diff
+*.conf
+*.part
+*.retry
+*.diff
